@@ -1,0 +1,26 @@
+import styled from "@emotion/styled";
+import React from "react";
+
+type GridProps = {
+  children : React.ReactNode
+}
+
+const Grid = (props : GridProps) => {
+  return (
+    <Grid.Container>
+      <Grid.Content>
+        {props.children}
+      </Grid.Content>
+    </Grid.Container>
+  )
+}
+
+Grid.Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 300px 1fr;
+`
+Grid.Content = styled.div`
+  grid-column-start: 2;
+`
+
+export default Grid
