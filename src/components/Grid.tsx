@@ -17,7 +17,7 @@ const Grid = (props : GridProps) => {
 
 Grid.Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 300px 1fr;
+  grid-template-columns: 1fr 420px 1fr;
 `
 Grid.Content = styled.div`
   grid-column-start: 2;
