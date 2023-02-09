@@ -1,3 +1,4 @@
+import { Button, Card, CardActions, CardContent } from "@mui/material";
 import Grid from "../components/Grid";
 import styled from "@emotion/styled";
 
@@ -5,7 +6,19 @@ const Login = () => {
   return (
     <Grid>
       <Login.Container>
-        Login
+        <Card>
+          <CardContent>
+            <label htmlFor="">E-mail</label>
+            <input type="email" />
+            <label htmlFor="">Senha</label>
+            <input type="password" />
+          </CardContent>
+          <CardActions>
+            <Button>
+              Entrar
+            </Button>
+          </CardActions>
+        </Card>
       </Login.Container>
     </Grid>
   )
@@ -13,7 +26,6 @@ const Login = () => {
 
 Login.Container = styled.div`
   margin-top: ${p => p.theme.spacing(12)};
-  background-color: ${p => p.theme.palette.primary.main};
   padding: ${p => p.theme.spacing(2)}
 `
 
