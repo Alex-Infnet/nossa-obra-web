@@ -18,6 +18,8 @@ const Grid = (props : GridProps) => {
 Grid.Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 420px 1fr;
+  background: ${p => p.theme.palette.grey[200]};
+  height: 100vh;
 `
 Grid.Content = styled.div`
   grid-column-start: 2;
