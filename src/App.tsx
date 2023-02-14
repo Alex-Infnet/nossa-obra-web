@@ -1,11 +1,12 @@
 import { ThemeProvider } from '@emotion/react';
-import Login from './pages/Login';
 import { theme } from './styles/theme';
+import router from './routes/Route';
+import { RouterProvider } from 'react-router-dom';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Login />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
