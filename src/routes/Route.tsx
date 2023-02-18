@@ -1,15 +1,16 @@
-import Access from "../layouts/Access";
-import SignIn from "../pages/SignIn";
+import {Access} from "../layouts";
 import { createBrowserRouter } from "react-router-dom";
-import SignUp from "../pages/SignUp";
-import ForgotPassword from "../pages/ForgotPassword";
-import NotFound404 from "../pages/shared/NotFound404";
-import Private from "../pages/Private";
-import PrivateRouter from "../pages/shared/PrivateRouter";
+import {SignUp, SignIn, ForgotPassword} from "../pages/access";
+import {NotFound404, PrivateRouter} from "../pages/shared";
   
-const router = createBrowserRouter([
+export default createBrowserRouter([
   {
     errorElement: <NotFound404 />
+  },
+  {
+    element: <PrivateRouter />,
+    children: [
+    ]
   },
   {
     element: <Access />,
@@ -26,16 +27,5 @@ const router = createBrowserRouter([
         path: 'forgotpassword'
       }
     ]
-  },
-  {
-    element: <PrivateRouter />,
-    children: [
-      {
-        path: '',
-        element: <Private />
-      }
-    ]
   }
 ])
-
-export default router
