@@ -1,36 +1,21 @@
 import styled from "@emotion/styled"
 import { Button, Card, Grid, Stack } from "@mui/material"
+import { useContext } from "react"
+import { BuildingsContext } from "./BuildingContext"
 
 const Buildings = () => {
-  const buildings = [
-    {
-      nome : "Escola A",
-      data_orcamento : "06/01/2022",
-      inicio_obras : "06/01/2022",
-      data_previsto_termino : "08/08/2022",
-      percentual_concluido : 20,
-      fase_atual : "Pavimentação do terreno"
-    },
-    {
-      nome : "Escola B",
-      data_orcamento : "06/01/2022",
-      inicio_obras : "06/01/2022",
-      data_previsto_termino : "08/08/2022",
-      percentual_concluido : 80,
-      fase_atual : "Pavimentação do terreno"
-    }
-  ]
+  const {builds, setBuilds} = useContext(BuildingsContext)
   return (
     <Buildings.Container direction="column">
       <Buildings.Title>
         Obras / Orçamentos em execução
       </Buildings.Title>
       <Buildings.Grid container spacing={2}>
-      {buildings.map(building => {
+      {builds.map((build : any) => {
         return (
           <Buildings.GridItem item xs={4}>
             <Buildings.Card>
-              <h2>{building.nome}</h2>
+              <h2>{build.cliente}</h2>
             </Buildings.Card>
           </Buildings.GridItem>
         )

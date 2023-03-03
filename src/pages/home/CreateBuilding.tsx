@@ -1,17 +1,29 @@
 import styled from "@emotion/styled"
-import { Button, FormLabel, Input } from "@mui/material"
+import { FormLabel, Input } from "@mui/material"
+import { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form"
+import { useParams } from "react-router";
+import { BuildingsContext } from "./BuildingContext";
+import { Link } from "react-router-dom";
 
 type BuildingInputs = {
   descricao: string,
   categoria: string,
 };
 
+type ParamsType = {
+  id : string
+}
+
 const CreateBuilding = () => {
+  const {builds, setBuilds} = useContext(BuildingsContext)
   const {register, handleSubmit, watch, formState: {errors}} = useForm<BuildingInputs>()
+  const params = useParams<ParamsType>()
 
   const onSubmit: SubmitHandler<BuildingInputs> = (data : object) => {
-    console.log(data)
+    const newBuilds = {...builds}
+    newBuilds[params.id ? params.id : 0].atividades.push(data)
+    setBuilds(newBuilds)
   }
 
   return (
@@ -38,6 +50,10 @@ const CreateBuilding = () => {
         <p>
           Descricao: {watch("descricao")} - Categoria: {watch("categoria")}
         </p>
+        <hr />
+        <Link to={`/orcamento/${params.id}`} >
+          Voltar ao orçamento
+        </Link>
     </CreateBuilding.Form>
   )
 }

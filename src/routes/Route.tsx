@@ -4,6 +4,7 @@ import {SignUp, SignIn, ForgotPassword} from "../pages/access";
 import {NotFound404, PrivateRouter} from "../pages/shared";
 import { Buildings, CreateBuilding } from "../pages/home";
 import Home from "../layouts/Home";
+import ActivitiesBuilding from "../pages/home/ActivitiesBuilding";
   
 export default createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export default createBrowserRouter([
           {
             path: "",
             element: <Buildings />
+          },
+          {
+            path: "/orcamento/:id",
+            element: <ActivitiesBuilding />
           },
           {
             path: "/orcamento/:id/new",
