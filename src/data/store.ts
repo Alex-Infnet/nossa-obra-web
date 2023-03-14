@@ -1,11 +1,5 @@
 import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
-
-// Como iniciar sua store
-const initialState = [
-  {
-    descricao : 'Name of the item'
-  }
-]
+import initialState from './initialState'
 
 // Adicionando acoes aos seus reducers
 const ITEM_ADD = "item/ADD"
