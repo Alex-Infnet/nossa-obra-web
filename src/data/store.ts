@@ -10,7 +10,7 @@ const add = createAction(ITEM_ADD, item => {
 })
 
 // Criar reducers dentro da sua loja
-const itemReducer = createReducer(initialState, builder => {
+const orcamentoReducer = createReducer(initialState, builder => {
   builder.addCase(add, (state, data) => {
     state.push(data.payload.item)
   })
@@ -28,7 +28,7 @@ export const addItem = (data : string) => {
 
 const store = configureStore({
   reducer : {
-    items : itemReducer
+    orcamento : orcamentoReducer
   }
 })
 

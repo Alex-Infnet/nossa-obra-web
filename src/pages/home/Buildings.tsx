@@ -3,7 +3,7 @@ import { Button, Card, Grid, Stack } from "@mui/material"
 import { useSelector } from "react-redux"
 
 const Buildings = () => {
-  const builds = useSelector((state : any) => state.items)
+  const builds = useSelector((state : any) => state.orcamento)
   return (
     <Buildings.Container direction="column">
       <Buildings.Title>
