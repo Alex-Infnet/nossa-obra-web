@@ -1,10 +1,9 @@
 import styled from "@emotion/styled"
 import { Button, Card, Grid, Stack } from "@mui/material"
-import { useContext } from "react"
-import { BuildingsContext } from "./BuildingContext"
+import { useSelector } from "react-redux"
 
 const Buildings = () => {
-  const {builds, setBuilds} = useContext(BuildingsContext)
+  const builds = useSelector((state : any) => state.orcamento)
   return (
     <Buildings.Container direction="column">
       <Buildings.Title>
@@ -15,7 +14,7 @@ const Buildings = () => {
         return (
           <Buildings.GridItem item xs={4}>
             <Buildings.Card>
-              <h2>{build.cliente}</h2>
+              <h2>{build.cliente.nome}</h2>
             </Buildings.Card>
           </Buildings.GridItem>
         )
