@@ -1,28 +1,55 @@
 import styled from "@emotion/styled"
 import { Button, Card, Grid, Stack } from "@mui/material"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { addOrcamento, removeOrcamento } from "../../data/reducers/orcamento"
+import { clientes } from "../../data/initialState"
+import { Orcamento } from "../../@types/orcamento"
 
 const Buildings = () => {
-  const builds = useSelector((state : any) => state.orcamento)
+  const orcamentos = useSelector((state : any) => state.orcamento)
+
+  const dispatch = useDispatch();
+
+  const adicionar = () => {
+    dispatch(addOrcamento({
+      id: parseInt((Math.random() * 1000).toString()),
+      cliente : clientes[0],
+      atividades : undefined,
+      data_orcamento : (new Date()),
+      data_inicio : (new Date()),
+      data_termino : (new Date()),
+      fase_atual : undefined
+    }))
+  }
+
+  const remover = () => {
+    var orcamento_to_delete : Orcamento = orcamentos[orcamentos.length - 1]
+    dispatch(removeOrcamento(orcamento_to_delete.id))
+  }
+
   return (
     <Buildings.Container direction="column">
       <Buildings.Title>
         Obras / Orçamentos em execução
       </Buildings.Title>
       <Buildings.Grid container spacing={2}>
-      {builds.map((build : any) => {
+      {orcamentos.map((orcamento : Orcamento) => {
         return (
           <Buildings.GridItem item xs={4}>
             <Buildings.Card>
-              <h2>{build.cliente.nome}</h2>
+              <h2>{orcamento.cliente.nome}</h2>
+              <h2>{orcamento.id}</h2>
             </Buildings.Card>
           </Buildings.GridItem>
         )
       })}
       </Buildings.Grid>
       <Buildings.Buttons>
-        <Button fullWidth variant="contained">
+        <Button fullWidth variant="contained" onClick={() => adicionar()}>
           Cadastrar novo orçamento
+        </Button>
+        <Button fullWidth variant="contained" onClick={() => remover()}>
+          Remover orçamento
         </Button>
       </Buildings.Buttons>  
     </Buildings.Container>
