@@ -1,14 +1,8 @@
-type Atividade = {
-  descricao : string,
-  categoria : string,
-  previsto : Date,
-  responsavel : string | undefined,
-  numero_funcionarios : number | undefined,
-  custo_unitario : number,
-  metragem : number,
-  bdi : number,
-  outras_informacoes : string | undefined
-}
+import { Atividade } from "../@types/atividade"
+import { Cliente } from "../@types/cliente"
+import { Fase } from "../@types/fase"
+import { Orcamento } from "../@types/orcamento"
+
 const atividades : Array<Atividade> = [
   {
     descricao : "",
@@ -22,14 +16,7 @@ const atividades : Array<Atividade> = [
     outras_informacoes : ""
   }
 ]
-
-type Cliente = {
-  nome : string,
-  url : string | undefined,
-  responsavel : string | undefined,
-  email : string | undefined
-}
-const clientes : Array<Cliente> = [
+export const clientes : Array<Cliente> = [
   {
     nome : "Escola A",
     url : "",
@@ -37,25 +24,14 @@ const clientes : Array<Cliente> = [
     email : ""
   }
 ]
-
-type Fase = {
-  descricao : string
-}
 const fases : Array<Fase> = [
   {
     descricao : "Pavimentação"
   }
 ]
-type Orcamento = {
-  cliente : Cliente,
-  atividades : Array<Atividade> | undefined,
-  data_orcamento : Date,
-  data_inicio : Date,
-  data_termino : Date,
-  fase_atual : Fase | undefined
-}
 const orcamentos : Array<Orcamento> = [
   {
+    id : 1,
     cliente : clientes[0],
     atividades : atividades,
     data_orcamento : new Date(),
