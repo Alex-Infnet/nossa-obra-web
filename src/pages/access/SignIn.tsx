@@ -1,32 +1,37 @@
 import styled from "@emotion/styled";
 import { Button, CardActions, CardContent, Grid, Input, Stack } from "@mui/material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
+import { ApiContext } from "../../context/ApiContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const {getToken, setToken} = useToken()
+  const {post} = useContext(ApiContext)
+  const navigate = useNavigate();
+
   const submit = () => {
-    var headers = new Headers()
-    headers.append("Content-Type", "application/json");
-    fetch("https://localhost:7172/user/login", {
-      method: 'post',
-      body: JSON.stringify({
-        Email : email,
-        Password : password
-      }),
-      headers: headers
+    post("https://localhost:7172/user/login", {
+      Email : email,
+      Password : password
     })
-    .then(data => data.text())
-    .then(response => {
+    .then((data : Response) => data.text())
+    .then((response : string) => {
       setToken(response)
     })
-    .catch(error => {
+    .catch((error : Error) => {
       console.log(error)
     })
   }
+
+  const token = getToken()
+  useEffect(() => {
+    if (token !== null) {
+      navigate("/")
+    }
+  }, [navigate, token])
 
   return (
     <>
