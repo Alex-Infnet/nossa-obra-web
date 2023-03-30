@@ -40,7 +40,7 @@ const SignIn = () => {
           <label>E-mail</label>
           <Input value={email} onChange={e => setEmail(e.target.value)} />
           <label>Senha</label>
-          <Input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <Input data-testid="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
         </Stack>
       </CardContent>
       <CardActions>
