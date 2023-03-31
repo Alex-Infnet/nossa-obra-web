@@ -2,7 +2,7 @@ import {Access} from "../layouts";
 import { createBrowserRouter } from "react-router-dom";
 import {SignUp, SignIn, ForgotPassword} from "../pages/access";
 import {NotFound404, PrivateRouter} from "../pages/shared";
-import { Buildings } from "../pages/home";
+import { AddActivity, Buildings } from "../pages/home";
 import Home from "../layouts/Home";
   
 export default createBrowserRouter([
@@ -20,6 +20,10 @@ export default createBrowserRouter([
           {
             path: "",
             element: <Buildings />
+          },
+          {
+            path: "cadastroatividade",
+            element: <AddActivity />
           }
         ]
       }
