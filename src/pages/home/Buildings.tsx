@@ -1,7 +1,9 @@
 import styled from "@emotion/styled"
 import { Button, Card, Grid, LinearProgress, Stack } from "@mui/material"
+import AddIcon from '@mui/icons-material/Add';
 import { useSelector } from "react-redux"
 import { Orcamento } from "../../@types/orcamento"
+import { Link } from "react-router-dom";
 
 type SectionProps = {
   right? : boolean
@@ -67,6 +69,11 @@ const Buildings = () => {
                   </Buildings.DataSectionValue>
                 </Buildings.DataSection>
               </Buildings.Data>
+              <Buildings.BuildingButtons>
+                <Buildings.BuildingButton to="/cadastroatividade">
+                  <Buildings.BuildingButtonIcon />
+                </Buildings.BuildingButton>
+              </Buildings.BuildingButtons>
             </Buildings.Card>
           </Buildings.GridItem>
         )
@@ -132,6 +139,24 @@ Buildings.Progress = styled.div`
 Buildings.LinearProgress = styled(LinearProgress)`
   height: ${p => p.theme.spacing(2)};
   border-radius: 1rem;
+`
+
+Buildings.BuildingButtons = styled.div`
+  display: flex;
+  margin-top: ${p => p.theme.spacing(2)};
+`
+
+Buildings.BuildingButton = styled(Link)`
+  height: ${p => p.theme.spacing(5)};
+  width: ${p => p.theme.spacing(5)};
+  border-radius: ${p => p.theme.spacing(2.5)};
+  background-color: ${p => p.theme.palette.grey[100]};
+  color: ${p => p.theme.palette.grey[900]};
+`
+
+Buildings.BuildingButtonIcon = styled(AddIcon)`
+  font-size: 2rem;
+  padding: ${p => p.theme.spacing(0.5)};
 `
 
 
